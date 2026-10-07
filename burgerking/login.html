@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../font/css/bkbulmatpro _bold.css">
+    <link rel="stylesheet" href="../font/css/pretendardvariable.css">
+    <link rel="stylesheet" href="../font/css/sandollgothicneoround.css">
+    <link rel="stylesheet" href="../css/default.css">
+    <title>버거킹 로그인 화면</title>
+    <style>
+        :ROOT {
+            --font-neo: "Sandoll GothicNeoRound", sans-serif;
+            --font-pre: "Pretendard Variable", sans-serif;
+            --font-bkr: "BKR", sans-serif;
+
+            --primary: #512314;
+            --focus: #d62302;
+            --baseborder: #d5cdc2;
+            --inputbg: #fffcf9;
+            --button: #e9ddcd;
+            --errorcolor: #c54734;
+            --placeholder:#ebe6e2;
+            --text: #766053;
+            --background: #f4ebdc;
+        }
+        
+        html {
+            font-size: 62.5%;
+        }
+
+        BODY {
+            font-family: var(--font-neo);
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--primary);
+        }
+
+        #wrap {
+            width: 100%;
+            max-width: 1024px;
+            min-width: 360px; /* min-height를 min-width로 수정 */
+            margin: 0 auto;
+            background-color: var(--background);
+        }
+
+        header {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 48px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            order: 2;
+        }
+
+        /* main 내부 여백 추가하여 좌우 간격 확보 */
+        main {
+            padding: 48px 20px 90px;
+        }
+
+        .title {
+            font-family: var(--font-bkr);
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 50px;
+        }
+        .title span:first-child {
+            font-size: 2.5rem;
+        }
+        .title > span:last-child {
+            font-size: 3.5rem;
+        }
+
+        .email {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        input[type="email"] {
+            margin-top: 8px;
+        }
+
+        input[type="password"] {
+            margin-top: 10px;
+        }
+
+        /* 350px 고정너비 대신 100%로 변경하여 화면 꽉 차게 변경 */
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            height: 50px;
+            padding: 0 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            border: 1px solid var(--baseborder);
+            background-color: var(--inputbg);
+        }
+
+        input::placeholder {
+            color: var(--placeholder);
+        }
+
+        .input_box.rela {
+            position: relative;
+        }
+
+        .pw_bttn {
+            position: absolute;
+            right: 20px;
+            bottom: 12px;
+            width: 26px;
+            height: 26px;
+            background: url(../burgerking/img/eye.svg)
+            no-repeat center / 20px;
+        }
+
+        /* 오타 수정: .login option label -> .login_option label */
+        .login_option label {
+            display: inline-block;
+        }
+
+        .login_option label:first-child {
+            margin-right: 30px;
+        }
+
+        .login_option {
+            margin-top: 12px;
+        }
+
+        .login_option span {
+            display: inline-flex;
+            align-items: center;
+            column-gap: 6px;
+        }
+
+        .login_bttn {
+            font-family: inherit;
+            font-size: inherit;
+            color: var(--placeholder);
+            background-color: var(--primary);
+            border: none;
+            opacity: 0.2;
+            width: 100%;
+            height: 44px;
+            border-radius: 25px;
+        }
+
+        .login_link {
+            margin-top: 20px;
+            font-family: var(--font-pre);
+            font-weight: 500;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .login_link a {
+            display: inline-flex;
+            align-items: center;
+            column-gap: 4px;
+        }
+
+        .login_link a::after {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 12px;
+            background-color: var(--primary);
+            opacity: 0.1;
+        }
+
+        .login_link a:last-child::after {
+            display: none;
+            content: "";
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .sns_login {
+            margin-top: 96px;
+        }
+
+        .sns_login > p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 12px;
+            font-size: 1.3rem;
+            color: var(--text);
+            white-space: nowrap;
+            margin-bottom: 35px;
+        }
+
+        .sns_login > p::before, .sns_login > p::after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            height: 1px;
+            background-color: var(--primary);
+            opacity: 0.1;
+        }
+
+        .sns_list {
+            display: flex;
+            justify-content: center;
+            column-gap: 20px;
+        }
+
+        .sns_list > a {
+            display: inline-flex;
+            width: 45px;
+            height: 45px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .sns_list > a:first-child {
+            background-image: url(../burgerking/img/Kakao.svg);
+        }
+        .sns_list > a:nth-child(2) {
+            background-image: url(../burgerking/img/Naver.svg);
+        }
+        .sns_list > a:nth-child(3) {
+            background-image: url(../burgerking/img/Apple.svg);
+        }
+        .sns_list > a:last-child {
+            background-image: url(../burgerking/img/Samsung.svg);
+        }
+
+        .prev_bttn {
+            position: absolute;
+            left: 0;
+            width: 48px;
+            height: 48px;
+            background: RED url(img/Back.svg) no-repeat scroll center / auto;
+        }
+
+        input[type="checkbox"] {
+            width: 30px;
+            height: 30px;
+            background-color: RED;
+        }
+
+        .login_option .check + span::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: url(../burgerking/img/Property\ 1=Disabled.svg) no-repeat center / contain;
+        }
+
+        .login_option .check:checked + span::before {
+            content: "";
+            background-image: url(../burgerking/img/Property\ 1=Active.svg);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>로그인</h1>
+            <button class="prev_bttn">
+                <span class="sr-only">이전버튼</span>
+            </button>
+        </header>
+        <main>
+            <h2 class="title">
+                <span>안녕하세요:)</span>
+                <span>버거킹입니다.</span>
+            </h2>
+            <form action="">
+                <fieldset>
+                    <legend class="sr-only">로그인 화면</legend>
+                    <label for="email" id="email" class="email">이메일 로그인</label>
+                    <div class="input_box">
+                        <input type="email" id="email" name="email" placeholder="아이디(이메일)를 입력해 주세요">
+                    </div>
+                    <div class="input_box rela">
+                        <input type="password" name="pw" placeholder="비밀번호를 입력해 주세요">
+                        <button type="button" class="pw_bttn">
+                            <span class="sr-only">비밀번호 보기</span>
+                        </button>
+                    </div>
+                    <div class="login_option">
+                        <label>
+                            <input type="checkbox" class="check sr-only" checked>
+                            <span>자동 로그인</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="check sr-only">
+                            <span>아이디 저장</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="login_bttn">로그인</button>
+                </fieldset>
+            </form>
+            <div class="login_link">
+                <a href="#">아이디 찾기</a>
+                <a href="#">비밀번호 재설정</a>
+                <a href="#">회원가입</a>
+            </div>
+            <div class="sns_login">
+                <p>SNS로 간편하게 로그인</p>
+                <div class="sns_list">
+                    <a href="#"><span class="sr-only">카카오로그인</span></a>
+                    <a href="#"><span class="sr-only">네이버로그인</span></a>
+                    <a href="#"><span class="sr-only">애플로그인</span></a>
+                    <a href="#"><span class="sr-only">삼성카드로그인</span></a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
