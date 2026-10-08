@@ -145,26 +145,13 @@
         .pw_bttn {
             position: absolute;
             top: 50%;
-            right: 17px;
-            width: 20px;
-            height: 14px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
             padding: 0;
-            border: 2px solid var(--text);
-            border-radius: 50% / 60%;
-            background: transparent;
+            border: 0;
+            background: transparent url("img/mcEye.svg") no-repeat center / 30px 30px;
             transform: translateY(-50%);
-        }
-
-        .pw_bttn::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            border: 2px solid var(--text);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
         }
 
         .login_option {
@@ -298,8 +285,7 @@
                             placeholder="비밀번호"
                         >
 
-                        <button type="button" class="pw_bttn">
-                            <span class="sr-only">비밀번호 보기</span>
+                        <button type="button" class="pw_bttn" aria-label="비밀번호 보기">
                         </button>
                     </div>
 
