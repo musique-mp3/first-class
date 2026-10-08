@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald's 로그인</title>
+
+    <link rel="stylesheet" href="../css/default.css">
+
+    <style>
+        @font-face {
+            font-family: "Speedee";
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            src: url("font/SPEEDEE-REGULAR.TTF") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Speedee";
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+            src: url("font/SPEEDEE-BOLD.TTF") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Pretendard Variable";
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+            src: url("font/PretendardVariable.ttf") format("truetype");
+        }
+
+        :root {
+            --font-speedee: "Speedee", sans-serif;
+            --font-pre: "Pretendard Variable", sans-serif;
+
+            --primary: #FFCC00;
+            --button: #FFBE0D;
+            --text: #292929;
+            --border: #707070;
+            --placeholder: #a7a7a7;
+            --link: #0067b9;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            min-width: 360px;
+            background-color: #fff;
+            color: var(--text);
+            font-family: var(--font-speedee);
+            font-size: 1.6rem;
+        }
+
+        #wrap {
+            width: 100%;
+            max-width: 390px;
+            min-width: 360px;
+            min-height: 100dvh;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+
+        header {
+            position: relative;
+            height: 120px;
+            padding: 82px 25px 0;
+        }
+
+        .prev_bttn {
+            position: absolute;
+            top: 83px;
+            left: 25px;
+            width: 16px;
+            height: 16px;
+            padding: 0;
+            border: 0;
+            border-left: 2px solid var(--text);
+            border-bottom: 2px solid var(--text);
+            background: transparent;
+            transform: rotate(45deg);
+        }
+
+        main {
+            min-height: calc(100dvh - 120px);
+            padding: 28px 25px 32px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login_head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 98px;
+        }
+
+        .login_head h1 {
+            margin: 0;
+            font-family: var(--font-speedee);
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .logo {
+            display: block;
+            width: 120px;
+            height: auto;
+        }
+
+        .login_form {
+            width: 100%;
+        }
+
+        .input_box {
+            position: relative;
+            width: 100%;
+            height: 47px;
+            margin-bottom: 20px;
+        }
+
+        .input_box input {
+            width: 100%;
+            height: 100%;
+            padding: 0 18px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            background-color: #fff;
+            color: var(--text);
+            font-family: var(--font-speedee);
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+
+        .input_box input::placeholder {
+            color: var(--placeholder);
+            opacity: 1;
+        }
+
+        .pw_bttn {
+            position: absolute;
+            top: 50%;
+            right: 17px;
+            width: 20px;
+            height: 14px;
+            padding: 0;
+            border: 2px solid var(--text);
+            border-radius: 50% / 60%;
+            background: transparent;
+            transform: translateY(-50%);
+        }
+
+        .pw_bttn::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            border: 2px solid var(--text);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .login_option {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+            margin-top: 8px;
+        }
+
+        .login_option label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-family: var(--font-speedee);
+            font-size: 1.4rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .login_option input {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            margin: 0;
+            border: 1px solid #d8d8d8;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+
+        .login_option input:checked {
+            border-color: var(--primary);
+            background-color: var(--primary);
+        }
+
+        .login_option input:checked::after {
+            content: "";
+            display: block;
+            width: 6px;
+            height: 11px;
+            margin: 4px auto 0;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: rotate(45deg);
+        }
+
+        .login_link {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-top: 27px;
+        }
+
+        .login_link a {
+            width: fit-content;
+            color: var(--link);
+            font-family: var(--font-pre);
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        .signup {
+            margin-top: 4px;
+            color: var(--text);
+            font-family: var(--font-speedee);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .signup a {
+            margin-left: 10px;
+            color: var(--link);
+            text-decoration: underline;
+        }
+
+        .login_bttn {
+            width: 100%;
+            height: 52px;
+            margin-top: auto;
+            border: 1px solid #d19d00;
+            border-radius: 28px;
+            background-color: var(--button);
+            color: var(--text);
+            font-family: var(--font-speedee);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+
+        <header>
+            <button type="button" class="prev_bttn">
+                <span class="sr-only">이전</span>
+            </button>
+        </header>
+
+        <main>
+            <div class="login_head">
+                <h1>로그인</h1>
+
+                <img
+                    src="img/Frame 42.png"
+                    alt="My McDonald's"
+                    class="logo"
+                >
+            </div>
+
+            <form action="" class="login_form">
+                <fieldset>
+                    <legend class="sr-only">로그인</legend>
+
+                    <div class="input_box">
+                        <label for="email" class="sr-only">아이디(이메일 주소)</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="아이디 (이메일 주소)"
+                        >
+                    </div>
+
+                    <div class="input_box">
+                        <label for="password" class="sr-only">비밀번호</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="비밀번호"
+                        >
+
+                        <button type="button" class="pw_bttn">
+                            <span class="sr-only">비밀번호 보기</span>
+                        </button>
+                    </div>
+
+                    <div class="login_option">
+                        <label>
+                            <input type="checkbox" name="auto-login" checked>
+                            <span>자동 로그인</span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="save-id">
+                            <span>아이디 저장</span>
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="login_link">
+                <a href="#">비밀번호 재설정</a>
+
+                <p class="signup">
+                    아직 회원이 아니세요?
+                    <a href="#">가입하기</a>
+                </p>
+            </div>
+
+            <button type="button" class="login_bttn">
+                로그인
+            </button>
+        </main>
+
+    </div>
+</body>
+</html>
